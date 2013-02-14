@@ -92,7 +92,8 @@ set :images_dir, 'images'
 configure :build do
   # For example, change the Compass output style for deployment
   activate :minify_css
-  
+  activate :gzip
+    
   # Minify Javascript on build
   # activate :minify_javascript
   
@@ -119,7 +120,7 @@ activate :sync do |sync|
   sync.fog_region = 'us-east-1'
   sync.aws_access_key_id = ENV['AWS_ACCESS_KEY']
   sync.aws_secret_access_key = ENV['AWS_SECRET_KEY']
-  sync.existing_remote_files = 'keep'
+  sync.existing_remote_files = 'delete'
   # sync.gzip_compression = false
   sync.after_build = true
 end
